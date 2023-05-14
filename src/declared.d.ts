@@ -16,6 +16,7 @@ interface User {
   company: Company;
   bloodGroup: string;
   address: Address;
+  domain: string;
 }
 interface Address {
   address: string;
