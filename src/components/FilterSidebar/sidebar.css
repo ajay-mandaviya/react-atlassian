@@ -1,0 +1,10 @@
+.filter-container {
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* height: 80vh; */
+  margin-right: 20px;
+  border: 1px solid lightgrey;
+}
