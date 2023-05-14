@@ -23,7 +23,6 @@ export const getUsers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(BASE_URL);
-      console.log("users dara is", response.data.users);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error?.message || "Something went wrong");

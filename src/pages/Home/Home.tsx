@@ -23,15 +23,13 @@ const Home = () => {
   const filterUsers = () => {
     let userWithFilter = users;
     if (ageSort) {
-      // const sortedData = [...userWithFilter];
-      // sortedData.sort((a, b) => {
-      //   if (ageSort === "asc") {
-      //     return a.age - b.age;
-      //   } else {
-      //     return b.age - a.age;
-      //   }
-      // });
-      // return (userWithFilter = sortedData);
+      userWithFilter = userWithFilter.slice().sort((a, b) => {
+        if (ageSort === "asc") {
+          return a.age - b.age;
+        } else {
+          return b.age - a.age;
+        }
+      });
     }
     if (selectedGloodGroup.length) {
       userWithFilter = userWithFilter.filter((user) =>
@@ -53,7 +51,6 @@ const Home = () => {
         const userFullname = `${user?.firstName || ""} ${
           user?.lastName || ""
         }`.toLocaleLowerCase();
-        console.log("userFullname", userFullname);
 
         const userName = user?.username.toLocaleLowerCase() || "";
         return (
