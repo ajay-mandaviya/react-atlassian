@@ -34,6 +34,10 @@ const filters = createSlice({
     },
     resetFilters: (state) => {
       state.ageSort = "";
+      state.gender = "";
+      state.searchUser = "";
+      state.searchByUnivercity = "";
+      state.selectedGloodGroup = [];
     },
     addBloodGroup: (state, { payload }) => {
       state.selectedGloodGroup = state.selectedGloodGroup.includes(payload)

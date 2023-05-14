@@ -2,16 +2,16 @@ import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 //
-const BASE_URL = "https://dummyjson.com/users";
+const BASE_URL = "https://dummyjson.com/users?limit=100";
 //
-type initialState = {
+type InitialState = {
   users: User[];
   selectedUser: User | null;
   loading: boolean;
   modalVisible: boolean;
 };
 //
-const initialState: initialState = {
+const initialState: InitialState = {
   users: [],
   selectedUser: null,
   loading: false,

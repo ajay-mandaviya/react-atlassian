@@ -7,6 +7,7 @@ import { Radio } from "@atlaskit/radio";
 import DropdownMenu, { DropdownItemGroup } from "@atlaskit/dropdown-menu";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { Checkbox } from "@atlaskit/checkbox";
+import Button from "@atlaskit/button";
 
 import {
   addBloodGroup,
@@ -50,6 +51,12 @@ const FilterSidebar = () => {
     }, 500);
   }, [userText]);
 
+  const handleReset = () => {
+    dispatch(resetFilters());
+    setText("");
+    setUserText("");
+  };
+
   return (
     <div className="filter-container">
       <PageHeader>Filter Users</PageHeader>
@@ -76,9 +83,6 @@ const FilterSidebar = () => {
           value={text}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setText(e.target.value);
-
-            // console.log("e", e.target?.value);
-            // searchCandidate(e.target.value);
           }}
         />
       </div>
@@ -125,7 +129,7 @@ const FilterSidebar = () => {
           />
         </div>
       </div>
-      <div>
+      <div style={{ width: "100%" }}>
         <DropdownMenu trigger={"Blood Group"}>
           {listbloodGroup.map((blood, _index) => (
             <DropdownItemGroup key={`${blood}-${_index}`}>
@@ -141,6 +145,15 @@ const FilterSidebar = () => {
             </DropdownItemGroup>
           ))}
         </DropdownMenu>
+      </div>
+      <div>
+        <Button
+          appearance="primary"
+          style={{ width: "100%" }}
+          onClick={handleReset}
+        >
+          Reset
+        </Button>
       </div>
     </div>
   );

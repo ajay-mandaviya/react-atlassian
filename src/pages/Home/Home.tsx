@@ -8,7 +8,7 @@ import { setModal, setModalUser } from "../../store";
 import { createKey } from "../../helper";
 const Home = () => {
   const dispatch = useAppDispatch();
-  const { users, loading, selectedUser, modalVisible } = useAppSelector(
+  const { users, loading, modalVisible } = useAppSelector(
     (state) => state.users
   );
 
@@ -20,21 +20,19 @@ const Home = () => {
     searchUser,
   } = useAppSelector((state) => state.filters);
 
-  console.log("searchUser", searchUser);
-
   const filterUsers = () => {
     let userWithFilter = users;
-    // if (ageSort) {
-    // const sortedData = [...userWithFilter];
-    // sortedData.sort((a, b) => {
-    //   if (ageSort === "asc") {
-    //     return a.age - b.age;
-    //   } else {
-    //     return b.age - a.age;
-    //   }
-    // });
-    // return (userWithFilter = sortedData);
-    // }
+    if (ageSort) {
+      // const sortedData = [...userWithFilter];
+      // sortedData.sort((a, b) => {
+      //   if (ageSort === "asc") {
+      //     return a.age - b.age;
+      //   } else {
+      //     return b.age - a.age;
+      //   }
+      // });
+      // return (userWithFilter = sortedData);
+    }
     if (selectedGloodGroup.length) {
       userWithFilter = userWithFilter.filter((user) =>
         selectedGloodGroup.includes(user.bloodGroup)
