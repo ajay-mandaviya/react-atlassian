@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { JiraIcon, JiraLogo, AtlassianStartLogo } from "@atlaskit/logo";
+import { JiraIcon, JiraLogo } from "@atlaskit/logo";
 import {
   AtlassianNavigation,
   PrimaryButton,
-  PrimaryDropdownButton,
   ProductHome,
 } from "@atlaskit/atlassian-navigation";
 

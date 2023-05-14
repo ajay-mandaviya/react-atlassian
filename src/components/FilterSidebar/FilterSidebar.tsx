@@ -2,7 +2,6 @@ import React from "react";
 import "./sidebar.css";
 import PageHeader from "@atlaskit/page-header";
 import Textfield from "@atlaskit/textfield";
-import Range from "@atlaskit/range";
 import { Radio } from "@atlaskit/radio";
 import DropdownMenu, { DropdownItemGroup } from "@atlaskit/dropdown-menu";
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -20,8 +19,9 @@ import {
 const FilterSidebar = () => {
   const { users } = useAppSelector((state) => state.users);
   const dispatch = useAppDispatch();
-  const { ageSort, gender, searchByUnivercity, selectedGloodGroup } =
-    useAppSelector((state) => state.filters);
+  const { ageSort, gender, selectedGloodGroup } = useAppSelector(
+    (state) => state.filters
+  );
   const prev: string[] = [];
   const listbloodGroup = users.reduce((prev, current) => {
     return prev.includes(current.bloodGroup)

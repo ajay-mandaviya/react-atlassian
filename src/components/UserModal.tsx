@@ -12,9 +12,8 @@ import Modal, {
 import { token } from "@atlaskit/tokens";
 import CrossIcon from "@atlaskit/icon/glyph/cross";
 import { N500 } from "@atlaskit/theme/colors";
-import { css, jsx } from "@emotion/react";
+
 import Image from "@atlaskit/image";
-import { useLocation } from "react-router-dom";
 
 interface ModalProps {
   /**
@@ -29,14 +28,12 @@ interface ModalProps {
 
 const UserModal: React.FC<ModalProps> = ({ visible, withFooter }) => {
   const dispatch = useAppDispatch();
-  const { pathname } = useLocation();
-  const { modalVisible, selectedUser } = useAppSelector((state) => state.users);
+
+  const { selectedUser } = useAppSelector((state) => state.users);
   const { shortListUsers } = useAppSelector((state) => state.shortList);
   const closeModal = () => {
     dispatch(setModal(false));
   };
-
-  console.log("pathname", pathname);
 
   const isUserShortList = shortListUsers.some(
     (user) => user?.id === selectedUser?.id

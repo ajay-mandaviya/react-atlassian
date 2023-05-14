@@ -3,7 +3,7 @@ import "./App.css";
 import { Home, ShortListUser } from "./pages";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { getUsers } from "./store";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { useAppDispatch } from "./hooks";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +18,10 @@ const router = createBrowserRouter([
 
 function App() {
   const dispatch = useAppDispatch();
-  const { users } = useAppSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="">
