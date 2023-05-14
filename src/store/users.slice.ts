@@ -8,12 +8,14 @@ type initialState = {
   users: User[];
   selectedUser: User | null;
   loading: boolean;
+  modalVisible: boolean;
 };
 //
 const initialState: initialState = {
   users: [],
   selectedUser: null,
   loading: false,
+  modalVisible: false,
 };
 
 export const getUsers = createAsyncThunk(
@@ -33,8 +35,11 @@ const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    setModalUser: (state, { payload }: PayloadAction<User>) => {
+    setModalUser: (state, { payload }: PayloadAction<User | null>) => {
       state.selectedUser = payload;
+    },
+    setModal: (state, { payload }: PayloadAction<boolean>) => {
+      state.modalVisible = payload;
     },
   },
   extraReducers: (builder) => {
@@ -42,8 +47,8 @@ const userSlice = createSlice({
     builder.addCase(getUsers.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getUsers.fulfilled, (state , action) => {
-      state.users = action.payload.users
+    builder.addCase(getUsers.fulfilled, (state, action) => {
+      state.users = action.payload.users;
       state.loading = false;
     });
     builder.addCase(getUsers.rejected, (state) => {
@@ -54,5 +59,5 @@ const userSlice = createSlice({
 });
 
 const userReducer = userSlice.reducer;
-export const { setModalUser } = userSlice.actions;
+export const { setModalUser, setModal } = userSlice.actions;
 export default userReducer;

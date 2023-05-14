@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type InitialState = {
-  shortListUsers: User[];
+  shortListUsers: Partial<User>[];
 };
 const initialState: InitialState = {
   shortListUsers: [],
@@ -10,7 +10,7 @@ const shortListUsers = createSlice({
   name: "shortListusers",
   initialState,
   reducers: {
-    addShortListUser: (state, { payload }: PayloadAction<User>) => {
+    addShortListUser: (state, { payload }: PayloadAction<Partial<User>>) => {
       state.shortListUsers.unshift(payload);
     },
   },
