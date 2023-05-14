@@ -99,7 +99,7 @@ const Home = () => {
       },
       {
         key: user.phone,
-        content: user.age,
+        content: user.phone,
       },
       {
         key: "More",
